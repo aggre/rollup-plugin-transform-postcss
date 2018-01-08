@@ -19,4 +19,32 @@ describe('rollup-plugin-transform-postcss', () => {
 			assert.ok(code.match(/-ms-flexbox;/))
 		})
 	})
+	it('include option', () => {
+		return rollup.rollup({
+			entry: 'samples/display-flex.js',
+			plugins: [
+				postcss({
+					plugins: [cssnext],
+					include: ['**/*.js']
+				})
+			]
+		}).then(bundle => {
+			const {code} = bundle.modules[0]
+			assert.ok(code.match(/-webkit-box;/))
+		})
+	})
+	it('exlude option', () => {
+		return rollup.rollup({
+			entry: 'samples/display-flex.js',
+			plugins: [
+				postcss({
+					plugins: [cssnext],
+					exclude: ['**/*.js']
+				})
+			]
+		}).then(bundle => {
+			const {code} = bundle.modules[0]
+			assert.ok(code.match(/-webkit-box;/) === null)
+		})
+	})
 })
