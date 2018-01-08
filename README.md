@@ -25,6 +25,7 @@ export default () => {
 ```js
 // rollup.config.js
 import postcss from 'rollup-plugin-transform-postcss';
+import cssnext from 'postcss-cssnext'; // e.g. use cssnext
 
 export default {
 	input: 'input.js',
@@ -36,7 +37,8 @@ export default {
 	plugins: [
 		postcss({
 			// Specify PostCSS plugin
-			plguins: [], // Required
+			// e.g. use cssnext
+			plguins: [cssnext], // Required
 
 			include: ['**/*.js'], // Optional
 
@@ -65,28 +67,6 @@ var displayFlex = () => {
 return displayFlex;
 
 }());
-```
-
-## Using cssnext plugin
-
-```js
-// rollup.config.js
-import postcss from 'rollup-plugin-transform-postcss';
-import cssnext from 'postcss-cssnext';
-
-export default {
-	input: 'input.js',
-	output: {
-		file: 'output.js',
-		format: 'iife'
-	},
-	name: 'MyModule',
-	plugins: [
-		postcss({
-			plguins: [cssnext]
-		})
-	]
-};
 ```
 
 ## License
