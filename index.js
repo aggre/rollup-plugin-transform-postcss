@@ -20,7 +20,7 @@ module.exports = (options = {}) => {
 				return null
 			}
 
-			const inner = styles.map(style => style.replace(/<\/?style>/g, ''))
+			const inner = styles.map(style => style.replace(/<\/?style((?!>).)*>/g, ''))
 
 			for(const style of inner) {
 				const compiled = postcss(plugins).process(style).css
