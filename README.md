@@ -67,7 +67,7 @@ return displayFlex;
 }());
 ```
 
-## Using with cssnext
+## Using cssnext plugin
 
 ```js
 // rollup.config.js
