@@ -1,7 +1,12 @@
 {
   "name": "rollup-plugin-transform-postcss",
   "version": "1.0.2",
-  "description": "Transform any files with PostCSS",
+	"description": "Transform any files with PostCSS",
+	"keywords": [
+		"rollup-plugin",
+		"rollup",
+		"postcss"
+	],
   "main": "index.js",
   "scripts": {
     "test": "mocha",
