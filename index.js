@@ -22,12 +22,23 @@ module.exports = (options = {}) => {
 
 			const inner = styles.map(style => style.replace(/<\/?style((?!>).)*>/g, ''))
 
-			for(const style of inner) {
-				const compiled = postcss(plugins).process(style).css
-				code = code.replace(style, compiled)
-			}
+			return new Promise((resolve, reject) => {
 
-			return code
+				Promise.all(inner.map(style => {
+					return postcss(plugins).process(style)
+				})).then(results => {
+
+					results.forEach((result, i) => {
+						const compiled = result.css
+						code = code.replace(inner[i], compiled)
+					})
+					resolve(code)
+
+				}).catch(err => {
+					reject(err)
+				})
+
+			})
 		}
 	}
 }
