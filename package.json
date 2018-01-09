@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-transform-postcss",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Transform any files with PostCSS",
   "keywords": [
     "rollup-plugin",
