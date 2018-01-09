@@ -25,7 +25,7 @@ module.exports = (options = {}) => {
 			return new Promise((resolve, reject) => {
 
 				Promise.all(inner.map(style => {
-					return postcss(plugins).process(style)
+					return postcss(plugins).process(style, {from: id})
 				})).then(results => {
 
 					results.forEach((result, i) => {
